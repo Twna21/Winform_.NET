@@ -70,16 +70,29 @@ namespace LAB5_Winform
         }
         private bool checkInput()
         {
-            if (string.IsNullOrWhiteSpace(txt_name.Text) || string.IsNullOrWhiteSpace(txt_ly.Text) || string.IsNullOrWhiteSpace(txt_hoa.Text) || string.IsNullOrWhiteSpace(txt_toan.Text))
+            if (string.IsNullOrWhiteSpace(txt_toan.Text) || string.IsNullOrWhiteSpace(txt_ly.Text) || string.IsNullOrWhiteSpace(txt_hoa.Text))
             {
-                MessageBox.Show("Both fields must be filled.");
+                MessageBox.Show("All fields must be filled.");
                 return false;
             }
-            if (!double.TryParse(txt_toan.Text, out double toan) || !double.TryParse(txt_ly.Text, out double ly) || !double.TryParse(txt_hoa.Text, out double hoa))
+
+            double toan, ly, hoa;
+            if (!double.TryParse(txt_toan.Text, out toan) ||
+                !double.TryParse(txt_ly.Text, out ly) ||
+                !double.TryParse(txt_hoa.Text, out hoa))
             {
-                MessageBox.Show("Invalid input for 'toán,' 'lý,' or 'hóa.' Please enter valid numeric values.");
+                MessageBox.Show("Invalid input. Please enter valid numbers.");
                 return false;
             }
+
+            if (toan < 0 || toan > 10 ||
+                ly < 0 || ly > 10 ||
+                hoa < 0 || hoa > 10)
+            {
+                MessageBox.Show("Numbers must be between 0 and 10.");
+                return false;
+            }
+
             return true;
         }
         private void txt_name_TextChanged(object sender, EventArgs e)
@@ -87,5 +100,7 @@ namespace LAB5_Winform
 
 
         }
+
+     
     }
 }

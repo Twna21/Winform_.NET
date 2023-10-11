@@ -105,6 +105,7 @@
             txt_ly.Name = "txt_ly";
             txt_ly.Size = new Size(222, 32);
             txt_ly.TabIndex = 1;
+         
             // 
             // txt_hoa
             // 
